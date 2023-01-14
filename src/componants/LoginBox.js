@@ -2,30 +2,37 @@ import "../App.css";
 import logo from "../images/logo.png";
 import googleLogo from "../images/google-logo.png";
 import { useFormik } from "formik";
+import { basicSchema } from "../schemas";
+
+const onSubmit = () => {
+  console.log("submitted");
+};
 
 export function Box() {
-  const formik = useFormik({
+  const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
+    validationSchema: basicSchema,
+    onSubmit,
   });
 
-  console.log(formik);
+  console.log(errors);
 
   return (
     <section>
       <img src={logo} className="logo"></img>
       <h2 className="tittle">Make the most of your professional life</h2>
-      <form autoComplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off">
         <div className="form_group">
           <label>Email</label>
           <input
             id="email"
             autoComplete="off"
-            value={formik.values.email}
+            value={values.email}
             type="email"
-            onChange={formik.handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="form_group">
@@ -33,9 +40,9 @@ export function Box() {
           <input
             type="password"
             id="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
         </div>
         <p>
