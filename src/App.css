@@ -175,3 +175,6 @@ footer > * {
 footer > *:hover {
   color: #0a66c2;
 }
+.join-btn {
+  font-weight: bolder;
+}

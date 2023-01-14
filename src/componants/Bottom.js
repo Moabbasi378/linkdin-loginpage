@@ -3,7 +3,7 @@ import logo from "../images/logo.png";
 export function Bottom() {
   return (
     <footer>
-      <div class="copyright">
+      <div className="copyright">
         <img src={logo} />
         <p>&copy;</p>
         <p>2021</p>
